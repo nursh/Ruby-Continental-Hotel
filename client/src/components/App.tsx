@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Login } from './Login';
+
 
 export function App() {
   return (
-    <h1>
-      Hello From React
-    </h1>
+    <Router>
+      <Route path="/login" component={Login} />
+    </Router>
   )
 }
