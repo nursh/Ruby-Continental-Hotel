@@ -10,9 +10,9 @@ interface LoginFormProps {
 
 const LoginForm = (props: FormikProps<LoginFormProps>) => {
   return (
-    <div>
-      <h2>Ruby Continental</h2>
-      <h3>Hotel &amp; Suites</h3>
+    <div className="login">
+      <h2 className="heading main-heading">Ruby Continental</h2>
+      <h3 className="heading sub-heading">Hotel &amp; Suites</h3>
       <Form>
         <div>
           <Field name="employeeNo" placeholder="Employee No" />
