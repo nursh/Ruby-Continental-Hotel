@@ -1,5 +1,5 @@
 import React from 'react';
-import { withFormik, FormikProps } from 'formik';
+import { withFormik, FormikProps, Form, Field, ErrorMessage } from 'formik';
 
 interface LoginFormProps {
   employeeNo: string,
@@ -9,7 +9,19 @@ interface LoginFormProps {
 const LoginForm = (props: FormikProps<LoginFormProps>) => {
   return (
     <div>
-      Login Page
+      <Form>
+        <div>
+          <Field name="employeeNo" placeholder="Employee No" />
+          <ErrorMessage name="employeeNo" />
+        </div>
+
+        <div>
+          <Field type="password" name="password" placeholder="Password" />
+          <ErrorMessage name="password" />
+        </div>
+
+        <button type="submit">Login</button>
+      </Form>
     </div>
   )
 }
@@ -19,7 +31,7 @@ export const Login = withFormik({
     employeeNo: '',
     password: ''
   }),
-  handleSubmit: () => {
-
+  handleSubmit: ({ employeeNo, password}) => {
+    console.log(`Employee No is ${employeeNo}`, `Password is ${password}`);
   }
 })(LoginForm);
