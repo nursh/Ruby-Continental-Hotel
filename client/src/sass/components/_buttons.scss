@@ -1,0 +1,12 @@
+.submit-btn {
+  padding: 1rem 3rem;
+  background: $red-primary-color;
+  color: white;
+  font-size: 2.0rem;
+  border:none;
+  display: block;
+
+  &:focus {
+    outline: none;
+  }
+}

@@ -11,24 +11,26 @@ interface LoginFormProps {
 const LoginForm = (props: FormikProps<LoginFormProps>) => {
   return (
     <div className="login">
-      <h2 className="heading main-heading">Ruby Continental</h2>
-      <h3 className="heading sub-heading">Hotel &amp; Suites</h3>
-      <Form>
-        <div>
-          <Field name="employeeNo" placeholder="Employee No" />
-          <ErrorMessage name="employeeNo" />
+
+      <Form className="login__form">
+        <h2 className="heading main-heading txt--center">Ruby Continental</h2>
+        <h3 className="heading sub-heading txt--center">Hotel &amp; Suites</h3>
+
+        <div className="field">
+          <Field name="employeeNo" placeholder="Employee No" className="field__input"/>
+          <ErrorMessage component="p" name="employeeNo" className="field__error" />
         </div>
 
-        <div>
-          <Field type="password" name="password" placeholder="Password" />
-          <ErrorMessage name="password" />
+        <div className="field">
+          <Field type="password" name="password" placeholder="Password" className="field__input"/>
+          <ErrorMessage component="p" name="password" className="field__error" />
         </div>
 
-        <div>
-          <NavLink to="/reset">Reset Password</NavLink>
+        <div className="field field--end">
+          <NavLink to="/reset" className="field__link">Reset Password</NavLink>
         </div>
 
-        <button type="submit">Login</button>
+        <button type="submit" className="submit-btn">Login</button>
       </Form>
     </div>
   )

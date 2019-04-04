@@ -1,0 +1,56 @@
+.login {
+  height: 100vh;
+  width: 100vw;
+  background: $background-yellow;
+  display: grid;
+
+  &__form {
+    border-top: .8rem solid $red-primary-color;
+    background: white;
+    width: 60%;
+    justify-self: center;
+    align-self: center;
+    padding: $padding-4 $padding-4 $padding-6;
+    display: grid;
+    justify-content: center;
+  }
+}
+
+.field {
+  margin-top: 3rem;
+
+  &__link {
+    font-size: $txt-16;
+    color: $red-primary-color;
+    transition: all .3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__input {
+    border: none;
+    font-family: inherit;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: hsl(48, 100%, 88%);
+    font-size: $txt-16;
+    transition: all .3s;
+
+    &:focus {
+      outline: 0;
+      border-bottom: .5rem solid $red-primary-color;
+    }
+  }
+
+  &__error {
+    color: $red-primary-color;
+    font-size: $txt-16;
+  }
+
+  &--end {
+    justify-self: end;
+    margin-bottom: 2rem;
+  }
+}
