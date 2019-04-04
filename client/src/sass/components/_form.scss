@@ -1,4 +1,4 @@
-.login {
+.f-container {
   height: 100vh;
   width: 100vw;
   background: $background-yellow;
@@ -18,7 +18,12 @@
 }
 
 .field {
+
   margin-top: 3rem;
+
+  &--last {
+    margin-bottom: 3rem;
+  }
 
   &__link {
     font-size: $txt-16;
@@ -52,6 +57,5 @@
 
   &--end {
     justify-self: end;
-    margin-bottom: 2rem;
   }
 }

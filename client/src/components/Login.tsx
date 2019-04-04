@@ -10,9 +10,9 @@ interface LoginFormProps {
 
 const LoginForm = (props: FormikProps<LoginFormProps>) => {
   return (
-    <div className="login">
+    <div className="f-container">
 
-      <Form className="login__form">
+      <Form className="f-container__form">
         <h2 className="heading main-heading txt--center">Ruby Continental</h2>
         <h3 className="heading sub-heading txt--center">Hotel &amp; Suites</h3>
 
@@ -26,8 +26,8 @@ const LoginForm = (props: FormikProps<LoginFormProps>) => {
           <ErrorMessage component="p" name="password" className="field__error" />
         </div>
 
-        <div className="field field--end">
-          <NavLink to="/reset" className="field__link">Reset Password</NavLink>
+        <div className="field field--end field--last">
+          <NavLink to="/confirmDetails" className="field__link">Reset Password</NavLink>
         </div>
 
         <button type="submit" className="submit-btn">Login</button>
@@ -45,7 +45,7 @@ export const Login = withFormik({
     employeeNo: yup.string().required('Employee No. is required'),
     password: yup.string().required('Password is required')
   }),
-  handleSubmit: ({ employeeNo, password}) => {
-    console.log(`Employee No is ${employeeNo}`, `Password is ${password}`);
+  handleSubmit: (values) => {
+    console.log(values);
   }
 })(LoginForm);
