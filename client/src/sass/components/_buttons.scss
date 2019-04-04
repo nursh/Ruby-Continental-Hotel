@@ -5,6 +5,11 @@
   font-size: 2.0rem;
   border:none;
   display: block;
+  transition: all .3s;
+
+  &:hover {
+    background: darken($red-primary-color, 15%);
+  }
 
   &:focus {
     outline: none;
