@@ -1,14 +1,22 @@
 import React from 'react';
 import { withFormik, FormikProps, Form, Field, ErrorMessage } from 'formik';
-import { NavLink } from 'react-router-dom';
+import { NavLink, RouteComponentProps } from 'react-router-dom';
 import * as yup from 'yup';
+
+interface RouteParams {
+
+}
+
+interface LoginProps extends RouteComponentProps<RouteParams> {
+
+}
 
 interface LoginFormProps {
   employeeNo: string,
   password: string
 };
 
-const LoginForm = (props: FormikProps<LoginFormProps>) => {
+const LoginForm = (props: LoginProps & FormikProps<LoginFormProps>) => {
   return (
     <div className="f-container">
 
@@ -36,7 +44,7 @@ const LoginForm = (props: FormikProps<LoginFormProps>) => {
   )
 }
 
-export const Login = withFormik({
+export const Login = withFormik<LoginProps, LoginFormProps>({
   mapPropsToValues: () => ({
     employeeNo: '',
     password: ''
@@ -45,7 +53,8 @@ export const Login = withFormik({
     employeeNo: yup.string().length(8, 'Employee No. is not valid').required('Employee No. is required'),
     password: yup.string().required('Password is required')
   }),
-  handleSubmit: (values) => {
+  handleSubmit: (values, { props }) => {
     console.log(values);
+    props.history.push('/');
   }
 })(LoginForm);
