@@ -42,7 +42,7 @@ export const Login = withFormik({
     password: ''
   }),
   validationSchema: yup.object().shape({
-    employeeNo: yup.string().required('Employee No. is required'),
+    employeeNo: yup.string().length(8, 'Employee No. is not valid').required('Employee No. is required'),
     password: yup.string().required('Password is required')
   }),
   handleSubmit: (values) => {

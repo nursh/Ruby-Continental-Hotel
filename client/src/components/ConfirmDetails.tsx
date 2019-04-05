@@ -1,14 +1,24 @@
 import React from 'react'
 import { withFormik, FormikProps, Form, Field, ErrorMessage } from 'formik';
+import { RouteComponentProps } from 'react-router-dom';
+import * as yup from 'yup';
 
 
-interface ConfirmDetailsFormProps {
+interface RouteParams {
+
+}
+
+interface DetailsProps extends RouteComponentProps<RouteParams> {
+
+}
+
+interface DetailsFormProps {
   firstName: string,
   lastName: string,
   employeeNo: string
 };
 
-const ConfirmDetailsForm = (props: FormikProps<ConfirmDetailsFormProps>) => {
+const ConfirmDetailsForm  = (props: DetailsProps & FormikProps<DetailsFormProps>) => {
   return (
     <div className="f-container">
       <Form className="f-container__form">
@@ -35,13 +45,19 @@ const ConfirmDetailsForm = (props: FormikProps<ConfirmDetailsFormProps>) => {
   )
 }
 
-export const ConfirmDetails = withFormik({
+export const ConfirmDetails = withFormik<DetailsProps, DetailsFormProps>({
   mapPropsToValues: () => ({
     firstName: '',
     lastName: '',
     employeeNo: ''
   }),
-  handleSubmit: (values) => {
+  validationSchema: yup.object().shape({
+    employeeNo: yup.string().length(8, 'Employee No. is not valid').required('Employee No. is required'),
+    firstName: yup.string().required('First Name is required'),
+    lastName: yup.string().required('Last Name is required')
+  }),
+  handleSubmit: (values, { props }) => {
     console.log(values);
+    props.history.push('/resetPassword');
   }
 })(ConfirmDetailsForm);
