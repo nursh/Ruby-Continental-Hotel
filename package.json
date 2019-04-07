@@ -6,8 +6,11 @@
   "scripts": {
     "type-check": "tsc",
     "type-check:watch": "npm run type-check -- --watch",
-    "start": "nodemon --exec babel-node --extensions \".ts\" src/index.ts",
-    "build": "babel src --out-dir dist --extensions \".ts\""
+    "start:server": "nodemon --exec babel-node --extensions \".ts\" src/index.ts",
+    "start": "concurrently \"npm run type-check:watch\" \"npm run start:server\" ",
+    "build": "babel src --out-dir dist --extensions \".ts\"",
+    "build:start": "nodemon dist/index",
+    "build:clean": "rimraf dist"
   },
   "repository": {
     "type": "git",
@@ -29,6 +32,7 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-typescript": "^7.3.3",
     "@types/mysql": "^2.15.5",
+    "concurrently": "^4.1.0",
     "nodemon": "^1.18.10",
     "typescript": "^3.4.2"
   },
@@ -41,6 +45,8 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "helmet": "^3.16.0",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "randomatic": "^3.1.1",
+    "rimraf": "^2.6.3"
   }
 }

@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import randomize from 'randomatic';
 
 const app = express();
 
@@ -10,7 +11,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
-  res.send({ message: 'Working now'})
+  const randomDigits = randomize('0', 4);
+  const password = randomize('Aa0', 10);
+  const employeeNo = `4000${randomDigits}`
+  res.send({ employeeNo, password });
 })
 
 app.listen(8080, () => {
