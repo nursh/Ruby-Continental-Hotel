@@ -1,1 +1,1 @@
-DROP DATABASE ruby_continental;
+DROP DATABASE IF EXISTS ruby_continental;
