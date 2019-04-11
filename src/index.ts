@@ -15,26 +15,26 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   const randomDigits = randomize('0', 4);
   const password = randomize('Aa0', 10);
   const employeeNo = `4000${randomDigits}`
   res.send({ employeeNo, password });
 });
 
-app.post('/hash', (req, res) => {
+app.post('/api/hash', (req, res) => {
   const { password } = req.body;
   const hash = hashPassword(password);
   res.send({ hash });
 });
 
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
   const { employeeNo, password } = req.body;
 
   connection.query({
     sql: 'SELECT * FROM `employees` WHERE `employee_no` = ?',
     values: [employeeNo]
-  }, async function (error, results, fields) {
+  }, async function (error, results) {
     if (error) console.error(error);
     const passwordMatches = checkPassword(password, results[0].password);
     if (passwordMatches) {
@@ -46,7 +46,6 @@ app.post('/login', (req, res) => {
       res.send({ token });
     }
   });
-  connection.end();
 })
 
 app.listen(8080, () => {
