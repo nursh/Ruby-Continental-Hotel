@@ -42,6 +42,6 @@ export const ResetPassword = withFormik<ResetProps, ResetFormProps>({
   }),
   handleSubmit: (values, { props }) => {
     console.log(values);
-    props.history.push('/login');
+    props.history.push('/');
   }
 })(ResetPasswordForm)

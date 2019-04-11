@@ -2,6 +2,8 @@ import React from 'react';
 import { withFormik, FormikProps, Form, Field, ErrorMessage } from 'formik';
 import { NavLink, RouteComponentProps } from 'react-router-dom';
 import * as yup from 'yup';
+import axios from 'axios';
+
 
 interface RouteParams {
 
@@ -53,8 +55,11 @@ export const Login = withFormik<LoginProps, LoginFormProps>({
     employeeNo: yup.string().length(8, 'Employee No. is not valid').required('Employee No. is required'),
     password: yup.string().required('Password is required')
   }),
-  handleSubmit: (values, { props }) => {
-    console.log(values);
-    props.history.push('/');
+  handleSubmit: async (values, { props }) => {
+    const response = await axios.post('/api/login', values );
+    if (response.status === 200) {
+      localStorage.setItem('token', response.data.token);
+      props.history.push('/home');
+    }
   }
 })(LoginForm);
