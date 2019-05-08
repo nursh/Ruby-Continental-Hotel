@@ -1,0 +1,27 @@
+.header {
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+    background: $red-primary-color;
+    color: #fff;
+    margin-bottom: 2rem;
+
+    &--end {
+      display: flex;
+      align-items: center;
+      font-size: $txt-14;
+    }
+  }
+
+  &__logout {
+    display: inline-block;
+    margin-left: 4rem;
+    padding: 1rem 2rem;
+    background: hsl(15, 86%, 30%);
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
