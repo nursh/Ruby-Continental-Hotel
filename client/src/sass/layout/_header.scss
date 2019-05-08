@@ -23,5 +23,26 @@
     background: hsl(15, 86%, 30%);
     font-weight: 600;
     cursor: pointer;
+    color: white;
+  }
+
+  &__nav {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+
+    & > li {
+      font-size: 1.4rem;
+      font-weight: 600;
+      padding-bottom: .5rem;
+
+      &:not(:first-child) {
+        margin-left: 3rem;
+      }
+
+      &:hover {
+        border-bottom: .5rem solid $red-primary-color;
+      }
+    }
   }
 }

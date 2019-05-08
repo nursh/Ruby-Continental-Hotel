@@ -13,8 +13,8 @@ export function App() {
       <div> 
         <Route exact path="/" component={Login} />
         <Route path="/confirmDetails" component={ConfirmDetails} />
-        <ProtectedRoute path="/home" component={Home} />
         <Route path="/resetPassword" component={ResetPassword} />
+        <ProtectedRoute path="/home" component={Home} />
       </div>
     </Router>
   )
