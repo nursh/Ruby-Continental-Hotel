@@ -1,3 +1,3 @@
 # Ruby-Continental-Hotel
 
-A hotel application
+A hotel application for Ruby Continental
